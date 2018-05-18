@@ -18,14 +18,17 @@
  */
 package org.mapstruct.ap.test.source.presencecheck.spi;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mapstruct.ap.testutil.WithClasses;
 import org.mapstruct.ap.testutil.runner.AnnotationProcessorTestRunner;
+import org.mapstruct.ap.testutil.runner.GeneratedSource;
 
 /**
  * Test for correct handling of source presence checks.
@@ -43,6 +46,13 @@ import org.mapstruct.ap.testutil.runner.AnnotationProcessorTestRunner;
 })
 @RunWith(AnnotationProcessorTestRunner.class)
 public class PresenceCheckTest {
+
+  private final GeneratedSource generatedSource = new GeneratedSource();
+
+  @Rule
+  public GeneratedSource getGeneratedSource() {
+    return generatedSource;
+  }
 
     @Test
     public void testWithSourcesPresent() {
@@ -78,6 +88,11 @@ public class PresenceCheckTest {
         assertThat( target.getSomeInteger() ).isNull();
         assertThat( target.getSomeList() ).isNull();
         assertThat( target.getSomeArray() ).isNull();
+
+        assertFalse( target.hasSomePrimitiveDouble());
+        assertFalse( target.hasSomeInteger());
+        assertFalse( target.hasSomeArray());
+        assertFalse( target.hasSomeList());
    }
 
     @Test
@@ -211,5 +226,7 @@ public class PresenceCheckTest {
         SoccerTeamTarget target = SoccerTeamMapper.INSTANCE.mapNested( soccerTeamSource );
 
         assertThat( target.getGoalKeeperName() ).isNull();
+
+        assertFalse( target.hasGoalKeeperName());
     }
 }

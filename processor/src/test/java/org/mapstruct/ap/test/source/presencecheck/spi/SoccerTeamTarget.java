@@ -29,6 +29,10 @@ public class SoccerTeamTarget {
     private List<String> players;
     private String goalKeeperName;
 
+    private boolean hasPlayers = false;
+    private boolean hasGoalKeeperName = false;
+
+
     public List<String> getPlayers() {
         return players;
     }
@@ -38,6 +42,7 @@ public class SoccerTeamTarget {
             this.players = new ArrayList<String>();
         }
         this.players.add( player );
+        hasPlayers = true;
     }
 
     public String getGoalKeeperName() {
@@ -46,6 +51,15 @@ public class SoccerTeamTarget {
 
     public void setGoalKeeperName(String goalKeeperName) {
         this.goalKeeperName = goalKeeperName;
+        hasGoalKeeperName = true;
+    }
+
+    public boolean hasPlayers() {
+        return hasPlayers;
+    }
+
+    public boolean hasGoalKeeperName() {
+        return hasGoalKeeperName;
     }
 
 }

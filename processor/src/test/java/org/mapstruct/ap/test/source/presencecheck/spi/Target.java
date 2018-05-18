@@ -30,12 +30,18 @@ public class Target {
     private List<String> someList;
     private String[] someArray;
 
+    private boolean hasSomePrimitiveDouble = false;
+    private boolean hasSomeInteger = false;
+    private boolean hasSomeList = false;
+    private boolean hasSomeArray = false;
+
     public double getSomePrimitiveDouble() {
         return somePrimitiveDouble;
     }
 
     public void setSomePrimitiveDouble(double someDouble) {
         this.somePrimitiveDouble = someDouble;
+        hasSomePrimitiveDouble = true;
     }
 
     public Integer getSomeInteger() {
@@ -44,6 +50,7 @@ public class Target {
 
     public void setSomeInteger(Integer someInteger) {
         this.someInteger = someInteger;
+        hasSomeInteger = true;
     }
 
     public List<String> getSomeList() {
@@ -52,6 +59,7 @@ public class Target {
 
     public void setSomeList(List<String> someList) {
         this.someList = someList;
+        hasSomeList = true;
     }
 
     public String[] getSomeArray() {
@@ -60,6 +68,23 @@ public class Target {
 
     public void setSomeArray(String[] someArray) {
         this.someArray = someArray;
+        hasSomeArray = true;
+    }
+
+    public boolean hasSomePrimitiveDouble() {
+        return hasSomePrimitiveDouble;
+    }
+
+    public boolean hasSomeInteger() {
+        return hasSomeInteger;
+    }
+
+    public boolean hasSomeList() {
+        return hasSomeList;
+    }
+
+    public boolean hasSomeArray() {
+        return hasSomeArray;
     }
 
 }
